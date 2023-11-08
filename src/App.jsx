@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './App.css'
 import Cart from './components/Cart'
 import Product from './components/Product'
@@ -18,7 +19,6 @@ const products = [
 
 
 function App() {
-
 
   return (
     <CartProvider>

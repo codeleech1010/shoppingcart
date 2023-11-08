@@ -5,6 +5,8 @@ const Cart = () => {
 
     const {cart, removeItemFromCart, clearCart} = useCart()
 
+    const value = cart.reduce((total, item) => total + item.price, 0)
+    
   return (
     <div className='bg-white p-4 rounded shadow'>
         <h2 className='text-lg font-semibold mb-2 text-gray-600'>Shopping Cart</h2>
@@ -16,6 +18,11 @@ const Cart = () => {
                 </li>
             ))}
         </ul>
+
+                <div>
+                    <p>Total Value: ${value}</p>
+                </div>
+
         <button onClick={clearCart} className='bg-red-500 text-white px-4 py-2 rounded mt-4 hover:bg-red-600'>Clear Cart</button>
     </div>
   )
