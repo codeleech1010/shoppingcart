@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const CartContext = createContext()
 
@@ -7,30 +7,39 @@ export function CartProvider({children}) {
 
     const addItemToCart = (item) => {
         setCart([...cart, item])
-    }
-
-    const removeItemFromCart = (itemId) => {
+      }
+      
+      
+      const removeItemFromCart = (itemId) => {
         const updatedCart = cart.filter((item) => item.id !== itemId)
         setCart(updatedCart)
-    }
-
-    const clearCart = () => {
+      }
+      
+      const clearCart = () => {
         setCart([])
+      }
+      
+      const handleQuantityChange = (itemId, event) =>{
+        const updatedItem = cart.map((item) =>
+        item.id === itemId ? {...item, quantity: parseInt(event.target.value, 10)} : item)
+          setCart(updatedItem)
+        }
+        
+        const QuantityIncrement = (itemId) => {
+          const updatedItem = cart.map((item) =>
+          item.id === itemId ? {...item, quantity: item.quantity + 1}:item)
+            setCart(updatedItem)
+          }
+
+    const QuantityDecrement = (itemId) => {
+        const updatedItem = cart.map((item) =>
+         item.id === itemId && item.quantity > 1 ? {...item, quantity: item.quantity - 1} : item)
+        setCart(updatedItem)
     }
 
-
-    // useEffect(() => {
-    //     const cart = JSON.parse(localStorage.getItem("cart"))
-    //     if(cart && cart.length > 0 ) {
-    //         setCart(cart)
-    //     }
-    //   }, [])
-
-    //   useEffect(() => {
-    //     localStorage.setItem('cart', json.stringify(cart))
-      
-    //   }, [cart])
-      
+    const buyProducts = () => {
+        alert("Thank You for buying!")
+    }
 
     return (
         <CartContext.Provider
@@ -38,8 +47,11 @@ export function CartProvider({children}) {
              cart,
              addItemToCart,
              removeItemFromCart,
-             clearCart
-            
+             clearCart,
+             handleQuantityChange,
+             QuantityIncrement,
+             QuantityDecrement,
+             buyProducts
             }}
         >
             {children}

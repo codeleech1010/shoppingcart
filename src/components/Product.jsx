@@ -7,7 +7,8 @@ const Product = ({product}) => {
 
   return (
     <div className='bg-white p-4 rounded shadow'>
-        <h2 className='text-lg font-semibold mb-2 text-gray-600'>{product.name}</h2>
+        <h2 className='text-lg font-semibold mb-2 text-gray-600'>{product.title}</h2>
+        <img src={product.thumbnail} className='w-full h-80' />
         <p className='text-gray-600'>${product.price}</p>
         <button onClick={() => addItemToCart(product)} className='text-red-600'>Add to cart</button>
     </div>
