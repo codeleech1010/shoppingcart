@@ -54,13 +54,13 @@ const products = [
     },
     {
         "id": 39,
-        "title": "Women Sweaters Wool",
+        "title": "Women Strip Heel",
         "price": 600,
         "quantity": 1,
         "total": 1200,
         "discountPercentage": 17.2,
         "discountedPrice": 994,
-        "thumbnail": "https://i.dummyjson.com/data/products/39/thumbnail.jpg"
+        "thumbnail": "https://i.dummyjson.com/data/products/48/thumbnail.jpg"
     },
     {
         "id": 96,
@@ -74,13 +74,13 @@ const products = [
     },
     {
         "id": 91,
-        "title": "Black Motorbike",
+        "title": "Rhinestone Korean Style Open Rings",
         "price": 569,
         "quantity": 1,
         "total": 1707,
         "discountPercentage": 13.63,
         "discountedPrice": 1474,
-        "thumbnail": "https://i.dummyjson.com/data/products/91/thumbnail.jpg"
+        "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
     },
     {
         "id": 9,

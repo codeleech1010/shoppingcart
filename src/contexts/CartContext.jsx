@@ -1,9 +1,15 @@
 import React, { createContext, useContext, useState } from "react";
+import products from "../components/ProductList";
 
 const CartContext = createContext()
 
 export function CartProvider({children}) {
+
     const [cart, setCart] = useState([])
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [productInModal, setProductInModal] = useState(null)
+
+
 
     const addItemToCart = (item) => {
         setCart([...cart, item])
@@ -41,6 +47,15 @@ export function CartProvider({children}) {
         alert("Thank You for buying!")
     }
 
+    const openModal = (product) => {
+      setProductInModal(product)
+      setIsModalOpen(!isModalOpen)
+    }
+
+    const closeModal = () => {
+      setIsModalOpen(false)
+    }
+
     return (
         <CartContext.Provider
         value={{
@@ -51,7 +66,12 @@ export function CartProvider({children}) {
              handleQuantityChange,
              QuantityIncrement,
              QuantityDecrement,
-             buyProducts
+             buyProducts,
+             openModal,
+             closeModal,
+             isModalOpen,
+             productInModal,
+          
             }}
         >
             {children}
