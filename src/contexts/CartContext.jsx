@@ -8,11 +8,17 @@ export function CartProvider({children}) {
     const [cart, setCart] = useState([])
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [productInModal, setProductInModal] = useState(null)
+    const [cartMsg, setCartMsg] = useState({})
+    const [isButtonDisabled, setButtonDisabled] = useState(false)
+
+
 
 
 
     const addItemToCart = (item) => {
         setCart([...cart, item])
+        setCartMsg({...cartMsg, [item.id] : "Your product is added to the cart"})
+        setButtonDisabled((prevDisabled) => ({...prevDisabled, [item.id]: true}))
       }
       
       
@@ -54,6 +60,7 @@ export function CartProvider({children}) {
 
     const closeModal = () => {
       setIsModalOpen(false)
+      setCartMsg({})
     }
 
     return (
@@ -71,7 +78,8 @@ export function CartProvider({children}) {
              closeModal,
              isModalOpen,
              productInModal,
-          
+             cartMsg,
+             isButtonDisabled,
             }}
         >
             {children}
